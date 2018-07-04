@@ -1,0 +1,4 @@
+#!/bin/sh
+cd /Users/ando/repos/octomerge-rails
+exec 2>&1
+exec bundle exec sidekiq -q default -e development -P /tmp/sidekiq.pid -L /Users/ando/repos/octomerge-rails/log/sidekiq.log

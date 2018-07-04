@@ -21,6 +21,7 @@
 # Ignore .docker-env
 /.docker-env
 /.env
+/.idea
 
 # Ignore database.yml
 /config/database.yml
