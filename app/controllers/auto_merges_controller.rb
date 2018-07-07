@@ -20,7 +20,15 @@ class AutoMergesController < ApplicationController
   end
 
   def create
-    auto_merge = current_user.auto_merges.find_or_initialize_by(auto_merge_params.merge(state: 'pending', last_updated: Time.zone.now))
+    #auto_merge = current_user.auto_merges.find_or_initialize_by(auto_merge_params.merge(state: 'pending',
+    #                                                            last_updated: Time.zone.now))
+    auto_merge = current_user.auto_merges.find_or_initialize_by(owner: auto_merge_params[:owner],
+                                                                repo: auto_merge_params[:repo],
+                                                                pr_number: auto_merge_params[:pr_number])
+    auto_merge.state = 'pending'
+    auto_merge.last_updated = Time.zone.now
+    auto_merge.commit_message = auto_merge_params[:commit_message]
+    auto_merge.commit_title = auto_merge_params[:commit_title]
 
     if auto_merge.save!
       render json: auto_merge
