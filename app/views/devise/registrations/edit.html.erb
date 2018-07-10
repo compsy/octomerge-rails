@@ -31,6 +31,16 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :nickname, 'octomerge chrome extension ID' %><br />
+    <%= f.text_field :nickname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :token, 'GitHub personal access token' %><br />
+    <%= f.text_field :token %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
