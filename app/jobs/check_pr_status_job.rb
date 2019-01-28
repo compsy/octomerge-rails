@@ -8,6 +8,8 @@ class CheckPrStatusJob < ApplicationJob
       auto_merge.delay_check_pr_status
     elsif auto_merge.success?
       auto_merge.merge_pull_request
+    else
+      auto_merge.destroy
     end
   end
 end
